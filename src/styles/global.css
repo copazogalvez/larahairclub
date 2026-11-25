@@ -383,3 +383,10 @@ section{padding:110px 0}
 .horario div{display:flex;justify-content:space-between;gap:16px;padding-bottom:8px;border-bottom:1px solid var(--linea);font-size:16px}
 .horario dt{color:var(--gris)}
 .horario dd{margin:0;font-weight:500;font-variant-numeric:tabular-nums}
+/* ===== ajustes celular: barra superior y cintas ===== */
+@media (max-width:700px){
+  .nav{top:0;left:0;right:0;width:100%;transform:none}
+  .nav-in{height:auto;border-radius:0 0 24px 24px;padding:calc(env(safe-area-inset-top,0px) + 10px) max(12px,env(safe-area-inset-right,0px)) 10px max(20px,env(safe-area-inset-left,0px));background:rgba(15,24,20,.94);border:0;border-bottom:1px solid rgba(227,199,126,.18);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+  .c1{top:-70px;transform:rotate(-7deg)}
+  .c2{top:-16px;transform:rotate(6deg)}
+}
