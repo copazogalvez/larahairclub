@@ -1,0 +1,505 @@
+---
+import '@fontsource/poppins/300.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/playfair-display/400-italic.css';
+import '@fontsource/bodoni-moda/500.css';
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { wa, AGENDA, RESENA, INSTAGRAM, DIRECCION, MAPS, precios, clp } from '../data/sitio.js';
+
+const titulo = 'Lara Hair Club · Expertas en rubios en La Serena';
+const descripcion = 'Balayage, babylights y tratamientos personalizados en La Serena, con diagnóstico y asesoría profesional. Agenda tu hora por WhatsApp.';
+const carrusel = ['g2', 'g4', 'g7', 'g1', 'g3', 'g5', 'g6', 'g8'];
+const resultados = [
+  ['g1', 'Balayage', 'Degradado suave de raíz a puntas'],
+  ['g5', 'Rubio perla', 'Matiz frío y luminoso'],
+  ['g3', 'Babylights', 'Luz fina alrededor del rostro'],
+  ['g6', 'Balayage ondulado', 'Rubio limpio y sin manchas'],
+  ['g8', 'Rubio miel', 'Tonos cálidos con brillo'],
+  ['g2', 'Contorno', 'Mechas que iluminan el rostro'],
+];
+const servicios = [
+  ['Balayage y babylights', 'Rubios luminosos con una transición natural de oscuro a claro.'],
+  ['Color y retoques', 'Color global, retoque de raíz, contorno y baño de color.'],
+  ['Tratamientos', 'K18, Olaplex, Kérastase y L\'Oréal Professionnel para tu fibra.'],
+  ['Cortes y peinados', 'Cortes, brushing y peinados para cada ocasión.'],
+];
+const resenas = [
+  ['Fernanda V.', 'Muy buena atención, me dejan el pelo increíble, siempre están atentas de todo. ¡Volvería mil veces, las mejores! Y la recepcionista muy amable.'],
+  ['Romina T.', 'Excelente experiencia. Magaly muy certera con sus recomendaciones y la atención de Javi es la mejor. Mi cabello está sano y con el color que me gusta.'],
+  ['Fernanda O.', 'Segunda vez y como siempre quedé feliz. Hacen prueba de mecha, te recomiendan lo que el pelo necesita y todo el tiempo están pendientes del proceso. Usan productos de lujo para el cabello.'],
+  ['Monserrat A.', 'Muy simpáticas. Me relajé demasiado en la cita porque son gentiles al tocarme el pelo, y hacen un buen trabajo.'],
+];
+const equipo = [
+  ['magaly', 'Magaly Phuyo', 'Fundadora · Colorista', 'Especialista en rubios y diagnóstico. Diseña cada balayage según tu cabello y tu historial.'],
+  ['javi', 'Javiera Andrade', 'Estilista · Colorista', 'Te acompaña en todo el proceso, de la evaluación al último brushing.'],
+];
+const faqs = [
+  ['¿Cuánto dura un balayage?', 'Desde unas 8 horas, porque trabajamos con cardado estratégico y empapelado con aluminio para lograr un degradado suave. El tiempo exacto depende del largo, la densidad y el historial de tu cabello.'],
+  ['¿Necesito una evaluación antes?', 'Te la recomendamos siempre. Puedes enviarnos por WhatsApp una foto de tu cabello actual y una de referencia, o venir a una evaluación de 15 minutos en el salón.'],
+  ['¿Qué es el protocolo K18?', 'Si tu cabello ya tiene procesos químicos, primero lo tratamos con K18 para descalcificarlo y prepararlo. Así llega sano a la decoloración y evitamos que se quiebre.'],
+  ['¿El precio puede cambiar?', 'Los valores de la página son de referencia. El valor final depende de tu cabello y del resultado que quieras lograr, y te lo confirmamos antes de empezar.'],
+  ['¿Cómo agendo mi hora?', 'Toca «Agendar», elige tu servicio, el día y la hora que te acomoden, y listo. Si tienes dudas antes de reservar, escríbenos por WhatsApp.'],
+];
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{titulo}</title>
+  <meta name="description" content={descripcion} />
+  <meta property="og:title" content={titulo} />
+  <meta property="og:description" content={descripcion} />
+  <link rel="canonical" href="https://www.larahairclub.com/" />
+  <meta property="og:image" content="https://www.larahairclub.com/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://www.larahairclub.com/" />
+  <meta property="og:locale" content="es_CL" />
+  <meta property="og:site_name" content="Lara Hair Club" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#1F3D31" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'HairSalon', name: 'Lara Hair Club', url: 'https://www.larahairclub.com/', image: 'https://www.larahairclub.com/og.jpg', description: descripcion, priceRange: '$$',
+    address: { '@type': 'PostalAddress', streetAddress: 'Av. Guillermo Ulriksen 2965, local 1', addressLocality: 'La Serena', addressCountry: 'CL' },
+    telephone: '+56977576836', sameAs: [INSTAGRAM],
+    openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Tuesday','Wednesday','Thursday','Friday','Saturday'], opens: '09:00', closes: '19:00' }]
+  })} />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-in">
+      <a href="#inicio" aria-label="Lara Hair Club, ir al inicio"><Logo class="logo" /></a>
+      <nav class="nav-links" aria-label="Secciones">
+        <a href="#servicios">Servicios</a>
+        <a href="#precios">Precios</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#preguntas">Preguntas</a>
+      </nav>
+      <a class="pill pill-gold pill-sm" href={AGENDA} target="_blank" rel="noopener">Agenda tu hora</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- PORTADA: palabra gigante detrás del cabello -->
+    <section id="inicio" class="hero">
+      <div class="hero-layers" data-zoom>
+        <img src="/img/portada-fondo.webp" alt="Balayage rubio ondulado en Lara Hair Club" class="hero-l" fetchpriority="high" />
+      </div>
+      <div class="hero-shade"></div>
+      <h1 class="hero-word" data-par>LARA</h1>
+      <div class="hero-layers" data-zoom aria-hidden="true">
+        <img src="/img/portada-frente.webp" alt="" class="hero-l" fetchpriority="high" />
+      </div>
+      <div class="hero-fade"></div>
+      <div class="hero-bottom wrap">
+        <div class="hero-copy">
+          <p class="hero-kicker">Expertas en rubios · La Serena</p>
+          <p class="hero-lead">Balayage, babylights y tratamientos personalizados, con diagnóstico profesional en cada visita.</p>
+          <div class="hero-ctas">
+            <a class="pill pill-gold" href={AGENDA} target="_blank" rel="noopener">Agenda tu hora</a>
+            <a class="pill pill-glass" href="#precios">Ver precios</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="avatars"><img src="/img/g1.webp" alt="" /><img src="/img/g5.webp" alt="" /><img src="/img/g3.webp" alt="" /><img src="/img/g6.webp" alt="" /></div>
+          <strong>15 años</strong><span>creando rubios</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EL SALÓN: un espejo dorado que se abre hasta llenar la pantalla -->
+    <section class="salon" data-pin aria-label="Nuestro salón">
+      <div class="salon-stick">
+        <p class="salon-pre">Nuestro salón</p>
+        <div class="espejo">
+          <img src="/img/salon.webp" alt="Interior de Lara Hair Club con espejos dorados y muro verde" class="salon-img" loading="lazy" />
+          <div class="salon-shade"></div>
+        </div>
+        <div class="aro" aria-hidden="true"></div>
+        <p class="salon-post">Pasa, te estábamos esperando</p>
+        <div class="wrap salon-in">
+          <p class="tag light">Nuestro salón</p>
+          <h2 class="light salon-h">Un espacio pensado <em>para ti</em></h2>
+          <div class="salon-chips">
+            <span>Diagnóstico K-Scan</span>
+            <span>Kérastase · L'Oréal Professionnel · K18 · Olaplex</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESENTACIÓN: carrusel con foto central -->
+    <section class="intro">
+      <p class="tag rv">Nosotras</p>
+      <h2 class="rv">Cada rubio es <em>único</em>, como tú</h2>
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker-track">
+          {[...carrusel, ...carrusel].map((g) => <img src={`/img/${g}.webp`} alt="" loading="lazy" />)}
+        </div>
+        <img class="ticker-center" src="/img/equipo.webp" alt="" loading="lazy" />
+      </div>
+      <p class="intro-text wrap rv">Somos Magaly y Javiera, estilistas y coloristas formadas en Pivot Point Internacional. Antes de decolorar evaluamos tu cabello y su historial, y trabajamos con cardado estratégico y empapelado con aluminio para lograr degradados suaves, limpios y sin manchas.</p>
+      <div class="equipo wrap">
+        {equipo.map(([img, n, r, d], i) => (
+          <article class="miembro rv" style={`--d:${i * 120}ms`}>
+            <div class="miembro-foto"><img src={`/img/${img}.webp`} alt={n} loading="lazy" /></div>
+            <div class="miembro-txt"><p class="miembro-r">{r}</p><h3>{n}</h3><p>{d}</p></div>
+          </article>
+        ))}
+      </div>
+      <div class="cifras wrap">
+        <div class="cifra rv"><b><span data-count="15">15</span></b><span>años creando rubios</span></div>
+        <div class="cifra rv"><b>+<span data-count="10000">10.000</span></b><span>rubios realizados</span></div>
+        <div class="cifra rv"><b><span data-count="5">5</span></b><span>marcas profesionales</span></div>
+      </div>
+      <div class="marcas wrap rv" aria-label="Marcas con las que trabajamos">
+        <p>Trabajamos con</p>
+        <ul>
+          <li><img src="/img/marcas/kerastase.webp" alt="Kérastase" style="--h:34px" loading="lazy" /></li>
+          <li><img src="/img/marcas/loreal.webp" alt="L'Oréal Professionnel" style="--h:38px" loading="lazy" /></li>
+          <li><img src="/img/marcas/olaplex.webp" alt="Olaplex" style="--h:21px" loading="lazy" /></li>
+          <li><img src="/img/marcas/k18.webp" alt="K18" style="--h:40px" loading="lazy" /></li>
+          <li><img src="/img/marcas/lazartigue.webp" alt="Lazartigue" style="--h:66px" loading="lazy" /></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="servicios">
+      <div class="wrap">
+        <p class="tag light rv">Servicios</p>
+        <h2 class="light rv">Lo que hacemos <em>mejor</em></h2>
+        <div class="srv-grid" data-swipe>
+          {servicios.map(([t, d], i) => (
+            <article class="srv rv" style={`--d:${i * 80}ms`}>
+              <span class="srv-n">0{i + 1}</span>
+              <h3>{t}</h3>
+              <p>{d}</p>
+              <a href={AGENDA} target="_blank" rel="noopener">Agendar →</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CINTA -->
+    <div class="cintas" aria-hidden="true">
+      <div class="cinta c1"><div class="cinta-track">{Array(2).fill(0).map(() => <span>Balayage ✦ Babylights ✦ Rubios a tu medida ✦ K18 ✦ Olaplex ✦ Kérastase ✦ La Serena ✦&nbsp;</span>)}</div></div>
+      <div class="cinta c2"><div class="cinta-track rev">{Array(2).fill(0).map(() => <span>Diagnóstico ✦ Cardado estratégico ✦ Empapelado con aluminio ✦ Degradados suaves ✦&nbsp;</span>)}</div></div>
+    </div>
+
+    <!-- PRECIOS: acordeón por categoría -->
+    <section id="precios" class="precios">
+      <div class="wrap narrow">
+        <p class="tag rv">Precios</p>
+        <h2 class="rv">Elige tu <em>servicio</em></h2>
+        <div class="acc">
+          {precios.map((c, i) => (
+            <details class="acc-item rv" open={i === 0} name="precios">
+              <summary>
+                <span class="acc-dot"></span>
+                <span class="acc-t">{c.categoria}<small>{c.items.length} servicios</small></span>
+                <span class="acc-from">{c.items[c.items.length - 1][2] ? 'desde ' + clp(Math.min(...c.items.map((x) => x[2] ?? Infinity))) : 'Consultar'}</span>
+              </summary>
+              <ul>
+                {c.items.map(([n, d, p]) => (
+                  <li><span>{n}<small>{d}</small></span><b>{p ? (d.startsWith('desde') ? 'desde ' : '') + clp(p) : clp(p)}</b></li>
+                ))}
+              </ul>
+              <a class="acc-cta" href={AGENDA} target="_blank" rel="noopener">Agenda en línea <span>→</span></a>
+            </details>
+          ))}
+        </div>
+        <p class="nota rv">Valores de referencia. El valor final depende del largo, la densidad y el historial de tu cabello.</p>
+      </div>
+    </section>
+
+    <!-- RESULTADOS: cinta de fotos y tarjetas -->
+    <section id="resultados" class="resultados">
+      <p class="tag rv">Resultados</p>
+      <h2 class="rv">Cabellos reales, <em>rubios reales</em></h2>
+      <div class="marquee" data-swipe>
+        <div class="marquee-track">
+          {[...resultados, ...resultados].map(([g, t, d], i) => (
+            i % 2 === 0
+              ? <figure class="res"><img src={`/img/${g}.webp`} alt={`${t} realizado en Lara Hair Club`} loading="lazy" /><figcaption><b>{t}</b>{d}</figcaption></figure>
+              : <figure class="res res-wide"><img src={`/img/${g}.webp`} alt={`${t} realizado en Lara Hair Club`} loading="lazy" /><figcaption><b>{t}</b>{d}</figcaption></figure>
+          ))}
+        </div>
+      </div>
+      <div class="center rv"><a class="pill pill-dark" href={INSTAGRAM} target="_blank" rel="noopener">Ver más en Instagram</a></div>
+      <div class="opiniones wrap">
+        <p class="opi-t rv">Lo que dicen nuestras clientas en Google</p>
+        <div class="opi-grid" data-swipe>
+          {resenas.map(([n, t], i) => (
+            <figure class="opi rv" style={`--d:${i * 90}ms`}>
+              <span class="opi-q" aria-hidden="true">“</span>
+              <blockquote>{t}</blockquote>
+              <figcaption>{n}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+      <div class="resena wrap rv">
+        <div class="estrellas" aria-hidden="true">{Array(5).fill(0).map((_, i) => <svg viewBox="0 0 24 24" style={`--i:${i}`}><path d="M12 2.5l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17.4 5.9 20.9l1.5-6.8L2.2 9.5l6.9-.7z" /></svg>)}</div>
+        <div class="resena-txt">
+          <h3>¿Ya nos visitaste?</h3>
+          <p>Tu opinión nos ayuda a crecer y a que más personas encuentren su rubio ideal. Déjanos tu reseña en Google, ¡toma menos de un minuto!</p>
+        </div>
+        <a class="pill pill-gold" href={RESENA} target="_blank" rel="noopener">Dejar mi reseña</a>
+      </div>
+    </section>
+
+    <!-- QUIZ: descubre tu rubio -->
+    <section id="quiz" class="quiz">
+      <div class="wrap narrow">
+        <p class="tag light rv">Descubre tu rubio</p>
+        <h2 class="light rv">¿Qué rubio es <em>para ti?</em></h2>
+        <p class="quiz-sub rv">Responde tres preguntas y te recomendamos la técnica ideal para tu cabello.</p>
+        <div class="qz" data-quiz>
+          <div class="qz-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="qz-step on" data-q="0">
+            <p class="qz-n">Pregunta 1 de 3</p>
+            <h3>¿Cómo está tu cabello hoy?</h3>
+            <div class="qz-ops">
+              <button type="button" data-v="natural"><b>Natural</b><span>Sin tintura ni decoloración</span></button>
+              <button type="button" data-v="color"><b>Con tintura</b><span>Tengo color o lo he teñido</span></button>
+              <button type="button" data-v="rubio"><b>Ya tengo rubio</b><span>Mechas o rubio que quiero renovar</span></button>
+            </div>
+          </div>
+          <div class="qz-step" data-q="1">
+            <p class="qz-n">Pregunta 2 de 3</p>
+            <h3>¿Qué look buscas?</h3>
+            <div class="qz-ops">
+              <button type="button" data-v="suave"><b>Luz natural</b><span>Un rubio suave, como de sol</span></button>
+              <button type="button" data-v="contraste"><b>Contraste</b><span>Raíz oscura y puntas claras</span></button>
+              <button type="button" data-v="rostro"><b>Iluminar mi rostro</b><span>Un cambio sutil adelante</span></button>
+            </div>
+          </div>
+          <div class="qz-step" data-q="2">
+            <p class="qz-n">Pregunta 3 de 3</p>
+            <h3>¿Cada cuánto quieres volver al salón?</h3>
+            <div class="qz-ops">
+              <button type="button" data-v="2"><b>Cada 2 o 3 meses</b><span>Me gusta mantenerlo impecable</span></button>
+              <button type="button" data-v="4"><b>Cada 4 a 6 meses</b><span>Un punto medio</span></button>
+              <button type="button" data-v="min"><b>Lo menos posible</b><span>Quiero que crezca sin notarse</span></button>
+            </div>
+          </div>
+          <div class="qz-res" aria-live="polite">
+            <p class="qz-n">Tu rubio ideal</p>
+            <h3 class="qz-t"></h3>
+            <p class="qz-d"></p>
+            <p class="qz-x"></p>
+            <div class="qz-ctas">
+              <a class="pill pill-gold qz-wa" href={wa()} target="_blank" rel="noopener">Quiero una evaluación</a>
+              <button type="button" class="pill pill-glass qz-again">Repetir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS -->
+    <section id="preguntas" class="faq">
+      <div class="wrap narrow">
+        <p class="tag rv">Preguntas frecuentes</p>
+        <h2 class="rv">Antes de tu <em>cita</em></h2>
+        {faqs.map(([q, a], i) => (
+          <details class="faq-item rv" name="faq">
+            <summary><span>{q}</span><i aria-hidden="true"></i></summary>
+            <p>{a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- LLAMADO FINAL -->
+    <section class="cta" data-circle>
+      <div class="cta-in wrap">
+        <p class="tag light rv">Agenda abierta</p>
+        <h2 class="light rv">Tu próximo rubio <em>empieza aquí</em></h2>
+        <a class="pill pill-gold rv" href={AGENDA} target="_blank" rel="noopener">Agenda tu hora en línea</a>
+      </div>
+      <div class="cta-strip" aria-hidden="true">
+        {['g4', 'proceso', 'g1', 'g7', 'g3', 'g8'].map((g) => <img src={`/img/${g}.webp`} alt="" loading="lazy" />)}
+      </div>
+    </section>
+
+    <!-- UBICACIÓN -->
+    <section id="ubicacion" class="ubicacion">
+      <div class="wrap ubi-in">
+        <img src="/img/salon.webp" alt="Interior de Lara Hair Club con espejos dorados y muro verde" loading="lazy" />
+        <div>
+          <p class="tag rv">Ubicación</p>
+          <h2 class="rv">Te esperamos en <em>La Serena</em></h2>
+          <p class="dir rv">{DIRECCION}</p>
+          <dl class="horario rv">
+            <div><dt>Martes a sábado</dt><dd>9:00 a 19:00</dd></div>
+            <div><dt>Domingo y lunes</dt><dd>Cerrado</dd></div>
+          </dl>
+          <div class="ubi-ctas rv">
+            <a class="pill pill-dark" href={MAPS} target="_blank" rel="noopener">Cómo llegar</a>
+            <a class="pill pill-line" href={wa()} target="_blank" rel="noopener">WhatsApp +56 9 7757 6836</a>
+          </div>
+          <p class="edu rv">¿Eres estilista? Conoce nuestros cursos de <a href={wa('Hola! Quiero información sobre los cursos de Lara Hair Education')} target="_blank" rel="noopener">Lara Hair Education</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap foot-top">
+      <p class="foot-claim">Expertas en rubios, balayage y tratamientos personalizados.</p>
+      <div class="foot-links">
+        <div><b>Secciones</b><a href="#servicios">Servicios</a><a href="#precios">Precios</a><a href="#preguntas">Preguntas</a></div>
+        <div><b>Contacto</b><a href={wa()} target="_blank" rel="noopener">WhatsApp</a><a href={INSTAGRAM} target="_blank" rel="noopener">Instagram</a><a href={MAPS} target="_blank" rel="noopener">Cómo llegar</a><a href={RESENA} target="_blank" rel="noopener">Déjanos tu reseña</a></div>
+      </div>
+    </div>
+    <div class="foot-word" aria-hidden="true"><Logo class="giant-foot" label="" /></div>
+    <p class="foot-copy wrap">© {new Date().getFullYear()} Lara Hair Club · La Serena</p>
+  </footer>
+
+  <nav class="barra" aria-label="Acciones rápidas">
+    <a href="#servicios" data-sec="servicios"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" /></svg>Servicios</a>
+    <a href="#precios" data-sec="precios"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M16 7H10a2.5 2.5 0 0 0 0 5h4a2.5 2.5 0 0 1 0 5H7" /></svg>Precios</a>
+    <a href="#resultados" data-sec="resultados"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3" /><path d="m4 16 5-5 4 4 3-3 4 4" /></svg>Resultados</a>
+    <a class="barra-cta" href={AGENDA} target="_blank" rel="noopener">Agendar</a>
+  </nav>
+
+  <a class="wa-float" href={wa()} target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.4 8.6 3.4 15.5c0 2.4.7 4.7 2 6.7L3.3 29l7-2c1.9 1 4 1.6 5.7 1.6 7 0 12.6-5.6 12.6-12.5S23 3 16 3zm0 22.9c-1.8 0-3.6-.5-5.2-1.4l-.4-.2-4.1 1.1 1.1-4-.2-.4c-1-1.6-1.6-3.5-1.6-5.4C5.6 9.8 10.3 5.2 16 5.2s10.4 4.6 10.4 10.4S21.7 25.9 16 25.9zm5.7-7.8c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.5-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.3c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.4 1.4.6 1.9.7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3z"/></svg>
+  </a>
+
+  <script>
+    document.documentElement.classList.add('js');
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
+    document.querySelectorAll('.rv').forEach((el) => io.observe(el));
+    const word = document.querySelector('[data-par]');
+    const zooms = document.querySelectorAll('[data-zoom]');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let tick = false;
+    const onScroll = () => {
+      tick = false;
+      const y = scrollY, h = innerHeight;
+      if (y < h * 1.2) {
+        word.style.transform = `translate(-50%, ${y * 0.35}px)`;
+        zooms.forEach((z) => (z.style.transform = `scale(${1 + y / h * 0.08})`));
+      }
+    };
+    // barra inferior en celular: marca la sección visible
+    const links = document.querySelectorAll('.barra [data-sec]');
+    const secIO = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) links.forEach((l) => l.classList.toggle('on', l.dataset.sec === e.target.id)); }), { rootMargin: '-45% 0px -45% 0px' });
+    ['servicios', 'precios', 'resultados'].forEach((id) => { const el = document.getElementById(id); el && secIO.observe(el); });
+    // indicadores de deslizamiento
+    document.querySelectorAll('[data-swipe]').forEach((box) => {
+      const dots = document.createElement('div'); dots.className = 'swipe-dots'; dots.setAttribute('aria-hidden', 'true');
+      const kids = [...box.querySelectorAll(':scope > *, :scope > div > *')].filter((k) => k.matches('article, figure')).slice(0, box.matches('.marquee') ? 6 : 99);
+      kids.forEach(() => dots.append(document.createElement('i')));
+      box.after(dots);
+      const upd = () => { const i = Math.round(box.scrollLeft / (box.scrollWidth / kids.length)); [...dots.children].forEach((d, j) => d.classList.toggle('on', j === Math.min(i, kids.length - 1))); };
+      box.addEventListener('scroll', () => requestAnimationFrame(upd), { passive: true }); upd();
+    });
+    // títulos: palabras que aparecen una a una
+    document.querySelectorAll('h2').forEach((h) => {
+      const walk = (n) => [...n.childNodes].forEach((c) => {
+        if (c.nodeType === 3) { const f = document.createDocumentFragment(); c.textContent.split(/(\s+)/).forEach((w) => { if (!w.trim()) { f.append(w); return; } const s = document.createElement('span'); s.className = 'w'; s.textContent = w; f.append(s); }); c.replaceWith(f); }
+        else if (c.nodeType === 1 && c.tagName !== 'BR') walk(c);
+      });
+      walk(h); h.querySelectorAll('.w').forEach((w, i) => w.style.setProperty('--i', i));
+    });
+    // salón: el espejo se abre con el scroll
+    const pin = document.querySelector('[data-pin]');
+    if (pin) {
+      const esp = pin.querySelector('.espejo'), aro = pin.querySelector('.aro'), img = pin.querySelector('.salon-img');
+      const pre = pin.querySelector('.salon-pre'), post = pin.querySelector('.salon-post'), inn = pin.querySelector('.salon-in');
+      const cl = (x) => Math.min(1, Math.max(0, x)), ease = (x) => 1 - Math.pow(1 - x, 3), io2 = (x) => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+      const drawPin = () => {
+        const r = pin.getBoundingClientRect(), W = innerWidth, H = innerHeight;
+        const p = reduce ? 1 : cl(-r.top / (r.height - H));
+        const a = io2(cl(p / 0.6));
+        const d0 = Math.min(W * 0.72, H * 0.5), d1 = Math.hypot(W, H) * 1.04;
+        const d = d0 + (d1 - d0) * a;
+        esp.style.width = esp.style.height = aro.style.width = aro.style.height = d + 'px';
+        img.style.width = W + 'px'; img.style.height = H + 'px';
+        img.style.transform = `translate(-50%,-50%) scale(${1.3 - 0.3 * a + 0.04 * cl((p - 0.6) / 0.4)})`;
+        aro.style.opacity = 1 - cl((a - 0.55) / 0.35);
+        const t = 1 - cl(p / 0.22);
+        pre.style.opacity = post.style.opacity = t;
+        pre.style.transform = `translate(-50%, ${-(1 - t) * 40}px)`; post.style.transform = `translate(-50%, ${(1 - t) * 40}px)`;
+        inn.style.setProperty('--q', ease(cl((p - 0.58) / 0.25)).toFixed(3));
+        inn.classList.toggle('on', p > 0.6);
+      };
+      addEventListener('scroll', () => requestAnimationFrame(drawPin), { passive: true });
+      addEventListener('resize', drawPin); drawPin();
+    }
+    // números: rodillos tipo contador que giran hasta la cifra final
+    document.querySelectorAll('[data-count]').forEach((el) => {
+      const txt = el.textContent; el.textContent = ''; el.setAttribute('aria-label', txt);
+      [...txt].forEach((ch, i) => {
+        if (!/\d/.test(ch)) { const s = document.createElement('span'); s.className = 'od-sep'; s.textContent = ch; el.append(s); return; }
+        const od = document.createElement('span'); od.className = 'od'; od.setAttribute('aria-hidden', 'true');
+        const st = document.createElement('span'); st.className = 'od-s';
+        for (let k = 0; k < 30; k++) { const d = document.createElement('span'); d.textContent = k % 10; st.append(d); }
+        st.dataset.to = 20 + +ch; st.style.transitionDelay = (i * 90) + 'ms'; od.append(st); el.append(od);
+      });
+    });
+    const cifras = document.querySelectorAll('.cifra');
+    const spin = (c) => { c.classList.add('go'); c.querySelectorAll('.od-s').forEach((st) => (st.style.transform = `translateY(${-st.dataset.to * 1.3}em)`)); };
+    if (reduce) cifras.forEach((c) => { c.classList.add('sin'); spin(c); });
+    else {
+      const cio = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { cio.unobserve(e.target); setTimeout(() => spin(e.target), 150); } }), { threshold: 0.5 });
+      cifras.forEach((c) => cio.observe(c));
+    }
+    // quiz
+    const qz = document.querySelector('[data-quiz]');
+    if (qz) {
+      const R = {
+        babylights: ['Babylights', 'Mechas muy finas que dan una luz natural, como si el sol te hubiera aclarado el cabello. El crecimiento casi no se nota.'],
+        balayage: ['Balayage', 'Un degradado suave de raíz a puntas, con más contraste y luminosidad. Lo trabajamos con cardado estratégico y empapelado con aluminio para un rubio limpio.'],
+        contorno: ['Contorno', 'Mechas que iluminan tu rostro y le dan luz a tu mirada, sin un cambio tan grande en el resto del cabello.'],
+      };
+      const X = {
+        natural: 'Tu cabello natural es el mejor punto de partida: el rubio queda más limpio y parejo.',
+        color: 'Como tu cabello tiene color, partimos con una evaluación y, si hace falta, con el protocolo K18 para que llegue sano a la decoloración.',
+        rubio: 'Como ya tienes rubio, evaluamos tu historial para renovarlo sin sobreprocesar el cabello.',
+      };
+      const steps = qz.querySelectorAll('.qz-step'), bars = qz.querySelectorAll('.qz-bar i'), res = qz.querySelector('.qz-res');
+      let ans = [];
+      const show = (i) => { steps.forEach((s, j) => s.classList.toggle('on', j === i)); res.classList.toggle('on', i === 3); bars.forEach((b, j) => b.classList.toggle('on', j < Math.min(i + 1, 3))); };
+      qz.querySelectorAll('.qz-step button').forEach((b) => b.addEventListener('click', () => {
+        const i = +b.closest('.qz-step').dataset.q; ans[i] = b.dataset.v;
+        b.classList.add('sel'); setTimeout(() => { b.classList.remove('sel'); if (i < 2) show(i + 1); else result(); }, 260);
+      }));
+      const result = () => {
+        const pts = { babylights: 0, balayage: 0, contorno: 0 };
+        pts[{ suave: 'babylights', contraste: 'balayage', rostro: 'contorno' }[ans[1]]] += 2;
+        if (ans[2] === '2') pts.babylights += 1; else { pts.balayage += 1; if (ans[2] === 'min') pts.contorno += 1; }
+        const k = Object.keys(pts).sort((a, b) => pts[b] - pts[a] || (a === { suave: 'babylights', contraste: 'balayage', rostro: 'contorno' }[ans[1]] ? -1 : 1))[0];
+        qz.querySelector('.qz-t').textContent = R[k][0];
+        qz.querySelector('.qz-d').textContent = R[k][1];
+        qz.querySelector('.qz-x').textContent = X[ans[0]];
+        qz.querySelector('.qz-wa').href = 'https://wa.me/56977576836?text=' + encodeURIComponent(`Hola! Hice el quiz de la web y me recomendó ${R[k][0].toLowerCase()}. Quiero agendar una evaluación`);
+        show(3);
+      };
+      qz.querySelector('.qz-again').addEventListener('click', () => { ans = []; show(0); });
+    }
+    // progreso de cada transición según el scroll
+    const circle = document.querySelector('[data-circle]');
+    const prog = (el) => { const r = el.getBoundingClientRect(); return Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight * 0.9))); };
+    const onScroll2 = () => {
+      if (circle) circle.style.setProperty('--p', prog(circle).toFixed(3));
+    };
+    if (!reduce) { addEventListener('scroll', () => requestAnimationFrame(onScroll2), { passive: true }); onScroll2(); }
+    else { circle?.style.setProperty('--p', 1); }
+    if (!reduce) addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  </script>
+</body>
+</html>
